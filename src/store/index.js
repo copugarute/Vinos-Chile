@@ -8,11 +8,19 @@ export default new Vuex.Store({
     products:[],
     cart:[],
     promo:[],
-    accesorios:[]
+    accesorios:[],
+    datosCompra:{}
   },
+  //* GETTERS
   getters: {
     mostarVinos(state){
       return state.products
+    },
+    mostrarAccesorios(state){
+      return state.accesorios
+    },
+    mostrarPromo(state){
+      return state.promo
     },
     mostrarCart(state){
       return state.cart
@@ -33,9 +41,19 @@ export default new Vuex.Store({
       },0)
     },
   },
+  //* MUTATIONS
   mutations: {
     SET_VINOS(state, product){
       state.products = product
+    },
+    SET_PROMOCIONES(state,promociones){
+      state.promo = promociones
+    },
+    SET_ACCESORIOS(state,accesorios){
+      state.accesorios = accesorios
+    },
+    SET_DATOS_COMPRA(state, datos){
+      state.datosCompra = datos
     },
     ADD_PRODUCT_CART(state,product){
       let exist = state.cart.some((p)=> p.id == product.id)
@@ -53,13 +71,11 @@ export default new Vuex.Store({
     REMOVE_PRODUCT_CART(){
 
     },
-    ADD_STOCK_PRODUCT(){
-
-    },
     REMOVE_STOCK_PRODUCT(){
 
     }
   },
+  //*ACTIONS
   actions: {
     async fetchVinos({commit}){
       try{
@@ -74,9 +90,38 @@ export default new Vuex.Store({
         console.log(error)
       }
     },
+    async fetchPromociones({commit}){
+      try{
+        let response = await fetch('/promocion.json')
+        if(!response.ok) throw('Error en API')
+        let promociones = await response.json()
+        console.log(promociones)
+        commit('SET_PROMOCIONES', promociones)
+      }
+      catch(error){
+        console.log(error)
+      }
+    },
+    async fetchAccesorios({commit}){
+      try{
+        let response = await fetch('/accesorios.json')
+        if(!response.ok) throw('Error en API')
+
+        let accesorios = await response.json()
+        console.log(accesorios)
+        commit('SET_ACCESORIOS', accesorios)
+
+      }
+      catch(error){
+        console.log(error)
+      }
+    },
     addProductCart({commit},product){
       commit('ADD_PRODUCT_CART', product)
     },
+    traerDatosCompra({commit}, datos){
+      commit('SET_DATOS_COMPRA', datos)
+    }
   },
   modules: {
   }

@@ -1,5 +1,5 @@
 <template>
-<v-container fluid>
+<v-container fluid v-if="this.mostrarCart.length > 0">
     <h1>Bolsa de compra mi vinos Chile</h1>
     <v-divider></v-divider>
     <v-row>

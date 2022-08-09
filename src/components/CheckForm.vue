@@ -1,5 +1,7 @@
 <template>
   <v-container>
+        <div class="text-h6"> Datos del comprador</div>
+        <v-divider></v-divider>
     <v-form
     ref="form"
     v-model="valid"
@@ -21,7 +23,7 @@
 
     <v-text-field
       v-model="confirmEmail"
-      :rules="rulesConfirm"
+      :rules="[v => v === this.email || 'Email invalido', v=> !!v || 'Email requerido']"
       label="Repetir E-mail"
       required
     ></v-text-field>
@@ -35,12 +37,41 @@
     ></v-text-field>
 
     
+    <div class="text-h6"> Datos del despacho</div>
+    <v-divider></v-divider>
+
+    <v-text-field
+      v-model="direccion"
+      :rules="[ v => !!v || 'Debe ingresar dirección']"
+      label="Dirección"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="comuna"
+      :rules="[ v => !!v || 'Debe ingresar comuna']"
+      label="Comuna"
+      required
+    ></v-text-field>
+
+     <div class="text-h6"> Forma de pago</div>
+    <v-divider></v-divider>
+
+        <v-radio-group v-model="pago">
+      <v-radio
+        v-for="(item, i) in formaDePago"
+        :key="i"
+        :label="item.label"
+        :value="item.value"
+        :rules="[v => !!v || 'Debe seleccionar medio de pago']"
+      ></v-radio>
+    </v-radio-group>
 
     <v-btn
       :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
+      @click="confirmar()"
     >
       Confirmar
     </v-btn>
@@ -57,11 +88,11 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
     name:'CheckForm',
     data: () => ({
       valid: true,
-
         nombre:'',
         email:'',
         confirmEmail:'',
@@ -69,6 +100,12 @@ export default {
         direccion:'',
         comuna:'',
         pago:'',
+        formaDePago:[
+            {label:'Tranferencia Bancaria', value:'transf_Bank'},
+            {label:'Servipag', value:'servipag'},
+            {label:'Webpay', value:'webpay'},
+            {label:'Contra Entrega', value:'contraentrega'}
+        ],
 
       nameRules: [
         v => !!v || 'El Nombre es requerido',
@@ -77,28 +114,44 @@ export default {
         v => !!v || 'El E-mail es requerido',
         v => /.+@.+\..+/.test(v) || 'El E-mail debe ser valido',
       ],
-      rulesConfirm: [
-        (v) => !! v || 'Inrese correo',
-        (v) => { v !== this.email || 'El Email no coincide'}
-      ],
-    //   emailConfirmRules: [
-    //     (v) => !!v || 'El E-mail is requerido',
-    //     (v) => !!v === this.email || 'El E-mail no coincide',
-    //   ],
       telefonoRules: [
         v => !!v || 'El teléfono es requerido',
         v => /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/.test(v) || 'El teléfono debe ser valido'
-      ]
+      ],
       
     }),
+    computed: {
+    
+    },
 
     methods: {
+        ...mapActions(['traerDatosCompra']),
       validate () {
         this.$refs.form.validate()
       },
       reset () {
         this.$refs.form.reset()
       },
+      confirmar(){
+        this.validate ()
+        if(this.validate){
+            let datosCompra = {
+            nombre: this.nombre,
+            email:this.email,
+            telefono:this.telefono,
+            direccion:this.direccion,
+            comuna:this.comuna,
+            pago:this.pago,
+            }
+            console.log(datosCompra)
+            this.traerDatosCompra(datosCompra)
+            this.$router.push('/confirmacion')
+        }
+        else{
+            alert('Debe ingresar todos los datos')
+        }
+      }
+      
       
     },
 
@@ -106,5 +159,5 @@ export default {
 </script>
 
 <style>
-
+    
 </style>

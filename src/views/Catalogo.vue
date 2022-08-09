@@ -1,6 +1,7 @@
 <template>
   <v-container fluid class="d-flex">
     <!-- <h1 class="text-center">Vinos mi Chile</h1> -->
+    <!-- condicionar el carrito si está vacio -->
     <v-row justify="end" >
       <v-col
         class="align-stretch"
@@ -16,7 +17,7 @@
         sm=""
         class="flex-nowrap"
       >
-        <CardVinos :product="product"/>
+        <CardProductos :product="product"/>
       </v-col>
     </v-row>
     
@@ -24,13 +25,13 @@
 </template>
 
 <script>
-import CardVinos from '@/components/CardVinos'
+import CardProductos from '@/components/CardProductos.vue'
 import Cart from '@/components/Cart'
 import {mapActions, mapGetters} from 'vuex'
 export default {
 name:'Catalogo',
 components: {
-  CardVinos,
+  CardProductos,
   Cart
 },
 computed: {
