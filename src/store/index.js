@@ -68,10 +68,23 @@ export default new Vuex.Store({
         })
       }
     },
-    REMOVE_PRODUCT_CART(){
-
+    ADD_STOCK_PRODUCT(state, product){
+      state.cart.forEach((prod)=>{
+        if(prod.id == product){
+          prod.count += 1
+        }
+      })
     },
-    REMOVE_STOCK_PRODUCT(){
+    REMOVE_PRODUCT_CART(state, idProduct){
+      let index = state.cart.findIndex((prod)=> prod.id == idProduct)
+      state.cart.splice(index,1)
+    },
+    REMOVE_STOCK_PRODUCT(state, idProduct){
+      state.cart.forEach((prod)=> {
+        if( prod.id == idProduct && prod.count > 1 ){
+          prod.count -= 1
+        }
+      })
 
     }
   },
@@ -118,6 +131,15 @@ export default new Vuex.Store({
     },
     addProductCart({commit},product){
       commit('ADD_PRODUCT_CART', product)
+    },
+    removeProductCart({commit}, idProduct){
+      commit('REMOVE_PRODUCT_CART',idProduct)
+    },
+    removeStockProduct({commit}, idProduct){
+      commit('REMOVE_STOCK_PRODUCT', idProduct)
+    },
+    addStockProduct({commit}, product){
+      commit('ADD_STOCK_PRODUCT', product)
     },
     traerDatosCompra({commit}, datos){
       commit('SET_DATOS_COMPRA', datos)

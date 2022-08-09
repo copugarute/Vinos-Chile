@@ -25,8 +25,15 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
-
+    name:'Confirmacion',
+    computed: {
+        ...mapState(['datosCompra']),
+        numeroOrden(){
+            return this.datosCompra.fecha
+        }
+    },
 }
 </script>
 

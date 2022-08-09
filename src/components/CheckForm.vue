@@ -142,6 +142,7 @@ export default {
             direccion:this.direccion,
             comuna:this.comuna,
             pago:this.pago,
+            fecha: Math.floor(Math.random() * 10000)
             }
             console.log(datosCompra)
             this.traerDatosCompra(datosCompra)
