@@ -1,0 +1,20 @@
+Paleta de colores:
+
+Beige: #EEEBDD
+Palo rosa: #D8B6A4
+burdeo: 630000
+negro: 000000
+blanco: FFFFFF
+rojo: #D32F2F
+
+
+FONTS:
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&family=Quicksand:wght@400;600&display=swap');
+
+QUICKSAND:
+font-family: 'Quicksand', sans-serif;
+FONT WEIGTH: 400,600
+
+JOSEFIN SANS:
+font-family: 'Josefin Sans', sans-serif;
+font weigth: 200,500
