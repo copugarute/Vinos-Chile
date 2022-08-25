@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <NavBar/>
-
+    <v-divider></v-divider>
     <v-main>
       <router-view/>
     </v-main>
@@ -21,5 +21,7 @@ export default {
 };
 </script>
 <style>
-
+/* body{
+  width: 100%;
+} */
 </style>

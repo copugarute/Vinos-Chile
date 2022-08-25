@@ -6,6 +6,7 @@ burdeo: 630000
 negro: 000000
 blanco: FFFFFF
 rojo: #D32F2F
+rojo2: #B71C1C
 
 
 FONTS:
@@ -18,3 +19,17 @@ FONT WEIGTH: 400,600
 JOSEFIN SANS:
 font-family: 'Josefin Sans', sans-serif;
 font weigth: 200,500
+
+@media (min-width: 500px) and (max-width: 1264px)
+
+/* background: linear-gradient(to right, #630000 0%, #630000 50%, #EEEBDD 50%, #EEEBDD 100%); */
+
+imágenes copas
+rose
+https://cdn.pixabay.com/photo/2018/08/15/16/59/rose-3608571_1280.png
+
+blanco
+https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/h07/h83/8818737020958.png
+
+tinto
+https://pepeganga.vtexassets.com/arquivos/ids/637588/11334042-1.png?v=637685252553930000
