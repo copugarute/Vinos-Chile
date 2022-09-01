@@ -4,7 +4,7 @@
         <v-toolbar-title 
           class="titulo_nav"
         >
-          Vinos Mi Chile
+          Vinos Chile
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -40,7 +40,7 @@
       temporary
       color="accent"
     >
-      <v-app-bar-title class="mt-3 ms-5 titulo_drawer">Vinos Mi Chile</v-app-bar-title>
+      <v-app-bar-title class="mt-3 ms-5 titulo_drawer">Vinos Chile</v-app-bar-title>
       <v-list
       >
         <v-list-item-group
@@ -102,7 +102,7 @@ export default {
 .titulo_nav{
   font-family: 'Lobster', cursive;
   font-weight: 500;
-  font-size: 2rem !important;
+  font-size: 1.5rem !important;
   color: #EEEBDD;
 }
 .item_nav{

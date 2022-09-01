@@ -1,31 +1,39 @@
 <template>
   <v-container 
     fluid 
-    class="container-home"
-    
+    class="container-home flex-xs-column"
   >
     <v-row
     >
-      <v-col 
-        class="container_header"
-      >
-        <Header
-        />
-      </v-col >
-
       <v-col
-      class="container_carrusel"
+      class="container_carrusel pa-0 col-12"
+      
+      sm="12"
       >
+        <h1 class="carrusel_titulo text-center mt-2">Destacados</h1>
+        <v-divider class=""></v-divider>
         <Carrusel
           class="carrusel" 
           :mejoresVinos="mejoresVinos"
         />
       </v-col>
+      <v-col 
+        class="container_header pa-0 col-12"
+        sm="12"
+        align-self="center"
+      >
+        <Header
+        />
+      </v-col >
+
+      
     </v-row>
-      <v-divider class=""></v-divider>
-    <h1 class="titulo_vinos text-center">NUESTROS VINOS</h1>
-      <v-row class="">
+      <v-divider class="mt-5"></v-divider>
+    <h1 class="titulo_vinos text-center my-8">NUESTROS VINOS</h1>
+    
+      <v-row>
           <v-col
+            xs="12"
             sm="12"
             v-for="(vino,i) in tiposVino"
             :key="i"
@@ -33,7 +41,9 @@
           > 
             <CardTiposVinos 
             :vino="vino"/>
+            <v-divider class="d-flex d-sm-none"></v-divider>
           </v-col>
+          
       </v-row>
   </v-container>
    
@@ -102,6 +112,13 @@ export default {
 }
 .container_carrusel{
   background: #EEEBDD;
+  max-height: 100vh;
+}
+.carrusel_titulo{
+  color: #630000;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 2.25rem;
 }
 .carrusel{
   height: 100%;
@@ -109,13 +126,9 @@ export default {
 .container_tiposVinos{
   background: #EEEBDD;
 }
+
 .titulo_vinos{
   color: #630000;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 3.9rem;
-  font-weight: 400;
-}
-.titulo_vinos{
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 500;
   font-size: 2.25rem;

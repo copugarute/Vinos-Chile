@@ -1,6 +1,5 @@
 <template>
 <div>
-    <v-divider></v-divider>
      <v-card
         class="mx-auto my-10"
         elevation="0"
@@ -12,19 +11,25 @@
         <v-row justify="space-between">
             
             <v-col
-                class="mx-5"
+                class="mx-auto col-10"
+                
                 sm="5" 
-                justify-self="end"
+                align-self="center"
             >
                 <v-img
                 :src="vino.imagen"
-                max-height="400"
-                max-width="400"
+                max-height="80%"
                 contain
             ></v-img>
             </v-col>
-            <v-divider vertical></v-divider>
-             <v-col justify-self="center" align-self="center">
+            <v-divider vertical class="d-none d-sm-flex"></v-divider>
+            
+            <v-col 
+                class=" container_card col-10 mx-auto"
+                sm="5" 
+                justify-self="center" 
+                align-self="center"
+            >
                  <v-card-title class="card_title" color="accent">
                     {{vino.nombre}}
                 </v-card-title>
@@ -73,6 +78,10 @@ export default {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.2rem;
     font-weight: 400;
+    
+}
+.container_card{
+    border: 1px solid black;
 }
 
 
