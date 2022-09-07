@@ -1,14 +1,5 @@
 <template>
-  <v-container fluid class="d-flex">
-    <!-- <h1 class="text-center">Vinos mi Chile</h1> -->
-    <!-- condicionar el carrito si está vacio -->
-    <v-row justify="end" >
-      <v-col
-        class="align-stretch"
-      >
-        <Cart/>
-      </v-col>
-    </v-row>
+  <v-container fluid class="d-flex promo_container">
     <v-row justify="end" >  
       <v-col
         v-for="(product,i) in products"
@@ -17,7 +8,7 @@
         sm=""
         class="flex-nowrap"
       >
-        <CardOtros :product="product"/>
+        <CardProductos :product="product"/>
       </v-col>
     </v-row>
   </v-container>
@@ -25,11 +16,10 @@
 
 <script>
   import {mapActions, mapGetters} from 'vuex'
-  import CardOtros from '@/components/CardOtros.vue'
-  import Cart from '@/components/Cart'
+import CardProductos from '../components/CardCatalogo.vue'
 export default {
   name:'Promociones',
-  components:{CardOtros, Cart},
+  components:{CardProductos},
   computed: {
     ...mapGetters(['mostrarPromo']),
     products(){
@@ -46,5 +36,7 @@ export default {
 </script>
 
 <style>
-
+.promo_container{
+  background: #EEEBDD;
+}
 </style>

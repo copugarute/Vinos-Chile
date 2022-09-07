@@ -24,6 +24,16 @@
         </v-btn>
           
         </v-toolbar-items>
+        <v-badge
+          color="#D8B6A4"
+          :content="cartCount"
+          class="me-5 mt-3"
+          :value="cartCount"
+        >
+          <v-icon
+            @click="redirectTo('CartView')"
+          >mdi-cart</v-icon>
+        </v-badge>
 
 
     <!-- Menu Movil -->
@@ -66,6 +76,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   name: "NavBar",
   data() {
@@ -86,12 +97,15 @@ export default {
       },
     },
   computed: {
+    ...mapGetters(['cartCount']),
     currentRoute() {
       return this.$route.path;
     },
   },
   methods: {
-    
+    redirectTo(nameRoute){
+            this.$router.push({name:nameRoute})
+        }
   },
 };
 </script>

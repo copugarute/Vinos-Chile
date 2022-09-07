@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Promociones from '../views/Promociones.vue'
 import Accesorios from '../views/Accesorios.vue'
+import CartView from '../views/CartView.vue'
 import CheckOut from '../views/CheckOut.vue'
 import Confirmacion from '../views/Confirmacion.vue'
 
@@ -31,6 +32,11 @@ const routes = [
     path: '/accesorios',
     name: 'Accesorios',
     component: Accesorios
+  },
+  {
+    path: '/cart',
+    name: 'CartView',
+    component: CartView
   },
   {
     path: '/checkout',
