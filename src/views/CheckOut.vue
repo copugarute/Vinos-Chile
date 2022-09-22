@@ -1,13 +1,14 @@
 <template>
   <v-container>
-    <h1 class="text-center">Checkout</h1>
+    <h1 class="">Checkout</h1>
     <v-row>
-        <v-col md="5">
+        <v-col md="4" class="mt-4">
             <CheckForm/> 
         </v-col>
   
         <v-col
-            md="5"
+            class="carrito"
+            md="8"
         >
            <Cart/>  
         </v-col>
@@ -25,5 +26,7 @@ export default {
 </script>
 
 <style>
-
+.carrito{
+  background: #EEEBDD;
+}
 </style>

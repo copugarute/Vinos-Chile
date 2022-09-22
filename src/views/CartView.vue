@@ -15,6 +15,6 @@ export default {
 <style>
 .cart_container{
     background: #EEEBDD;
-    height: 100vh;
+    height: auto;
 }
 </style>

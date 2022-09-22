@@ -1,56 +1,63 @@
 <template>
-<v-container fluid>
-    <h1>Bolsa de compra mi vinos Chile</h1>
+<v-container fluid >
+    <h1 class="text-center">Bolsa de compra mi vinos Chile</h1>
     <v-divider></v-divider>
-    <v-row>
-        <v-col sm="5">
+    <v-row justify="center" >
+        <v-col sm="6" md="4">
             <v-card 
-                class="d-flex my-3" 
-                
+                class="d-flex justify-space-around my-3 px-4" 
+                shaped
+                elevation="0"
                 v-for="(product,i) in totalProduct"
                 :key="i"
             >
-                <v-icon 
-                    @click="deleteItem(product)"
-                >
-                    mdi-close
-                </v-icon>
+                <v-col class="">
+                    <v-icon
+                        class="" 
+                        @click="deleteItem(product)"
+                    >
+                        mdi-close
+                    </v-icon>
+                </v-col>
+                
                 <v-img
                     :src="product.imagen"
                     width="50%"
                 ></v-img>
                 <v-card-text class="d-flex flex-column justify-center">
-                    <div class="text-subtitle-1 font-weight-bold"> {{product.nombre}} </div>
-                    <div class="text-subtitle-2 font-weight-bold"> 
-                    {{product.count}} 
+                    <div class=" nombre_producto accent--text text-h6 font-weight-bold mb-2"> {{product.nombre}} </div>
+                    <div class="secondary--text font-weight-bold text-h6 mb-3"> ${{Number(product.total).toLocaleString('es-cl')}} </div>
+                    <div class="text-h6 accent--text font-weight-bold mb-3 "> 
+                    {{product.count}}
+                    
                     <v-icon
                             small
-                            class="mr-2"
+                            class="mr-2 accent--text text-h6"
                             @click="addStock(product)"
                         >
                             mdi-plus-circle
                         </v-icon>
                     <v-icon
                             small
-                            class="mr-2"
+                            class="mr-2 secondary--text text-h6"
                             @click="removeStock(product)"
                         >
                             mdi-minus-circle
                         </v-icon>
                         
                     </div>
-                    <div class="primary--text "> {{product.total}} </div>
+                    
                 </v-card-text>
             </v-card>
         </v-col>
         
   
-    <v-col sm="5">
+    <v-col sm="6" md="4">
         <v-card class="mt-5" flat>
-            <v-card-text>
-                <div> Subtotal Productos: <span>  {{totalCart}} </span> </div>
-                <div> Descuentos: <span>     {{descuentos()}}</span> </div>
-                <div> Total: <span>  {{totalCompra()}}  </span> </div>
+            <v-card-text> 
+                <div class="font-weight-bold text-h6 mb-1 px-3"> Subtotal Productos:   ${{Number(totalCart).toLocaleString('es-cl')}} </div>
+                <div class="font-weight-bold text-h6 mb-1 px-3"> Descuentos: ${{Number(descuentos()).toLocaleString('es-cl')}} </div>
+                <div class="font-weight-bold  headline secondary--text px-3"> Total:   ${{Number(totalCompra()).toLocaleString('es-cl')}}   </div>
             </v-card-text>
             <v-card-actions>
                 <v-btn
@@ -146,5 +153,9 @@ export default {
 </script>
 
 <style>
-
+.nombre_producto{
+    font-family: 'Josefin Sans', sans-serif;
+    /* font-weight: 500; */
+    font-size: 1rem;
+}
 </style>
